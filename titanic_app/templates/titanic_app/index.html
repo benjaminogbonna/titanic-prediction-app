@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titanic Game</title>
+    <link rel="'stylesheet" type="text/css" href="{% static 'titanic_app/style.css' %}">
+    <style>
+        body {
+            background-image: url("{% static 'titanic_app/titanic.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .intro {
+            color: navy;
+        }
+
+        #container {
+            border: 1px solid navy;
+            width: 500px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: white;
+            background: crimson;
+            width: 300px;
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        .success {
+            color: white;
+            background: green;
+            width: 300px;
+            font-size: 20px;
+            padding: 5px;
+        }
+        .button {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .button:hover {
+              background-color: #4CAF50;
+              color: white;
+              cursor: pointer;
+        }
+        input[type=text], select {
+              width: 100%;
+              padding: 10px 10px;
+              margin: 3px 0;
+              box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body>
+<br/>
+<center>
+    <div id="container">
+        <h1 class="intro">Play The Titanic Prediction Game.</h1>
+        <h3>Enter your details below to predict.</h3>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <br/>
+                <input type="submit" value="Check Survival" class="button">
+            </form>
+            <!--    <a href="{% url 'titanic_app:index' %}">Try again</a>-->
+        <p>{{ prediction }}</p>
+    </div>
+</center>
+
+<script src="{% static 'titanic_app/js.js' %}"></script>
+</body>
+</html>
