@@ -1,15 +1,10 @@
 from django.shortcuts import render
-# from django.http import HttpResponse  # Http404, HttpResponseRedirect
-# from django.template import loader
-# from django.urls import reverse
-# from django.views import generic
 from .forms import Checker
 import os
 import pandas as pd
 import joblib
 from sklearn.pipeline import FeatureUnion
 from . import preprocessor as ps
-
 
 # preparing the Classifier
 cur_dir = os.path.dirname(__file__)
